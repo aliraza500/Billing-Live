@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 700px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            display: none;
+        }
+
+        .login-container {
+            display: block;
+        }
+
+        .options label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .result.correct {
+            color: green;
+        }
+
+        .result.incorrect {
+            color: red;
+        }
+
+        .feedback {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .question {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .certificate {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            border: 2px solid #007BFF;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .certificate h2 {
+            margin: 0;
+        }
+
+        .inputbox {
+            width: 300px;
+            height: 30px;
+        }
+
+        .inputbox:hover {
+            border: 2px solid purple;
+        }
+
+        #timer {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="container login-container" id="login-container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <div>
+                <label for="username">User name:</label>
+                <input type="text" class="inputbox" id="username" name="username" placeholder="Enter your Name"
+                    required>
+            </div>
+            <br>
+            <div>
+                <label for="email">Your Email:</label>
+                <input type="email" class="inputbox" id="email" name="email" placeholder="Enter your email"
+                    pattern="[a-z0-9._%+-]+@gmail\.com$" title="Must be a Gmail address" required>
+            </div>
+            <br>
+            <div>
+                <label for="password">Password:&nbsp;</label>
+                <input type="password" class="inputbox" id="password" name="password" placeholder="Enter your password"
+                    required>
+            </div>
+            <br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <div class="container quiz-container" id="quiz-container">
+        <div id="timer">Time left: 10:00</div>
+        <h1>Grammar Quiz (Ali Raza)</h1>
+        <form id="quiz-form">
+            <!-- Original Questions -->
+            <div class="question">
+
+
+                <p>1. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer1" value="A"> I am go to the store.</label>
+                    <label><input type="radio" name="answer1" value="B"> I am going to the store.</label>
+                    <label><input type="radio" name="answer1" value="C"> I going to the store.</label>
+                </div>
+
+                <br><br>
+                <p>2. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer2" value="A"> He has eat dinner.</label>
+                    <label><input type="radio" name="answer2" value="B"> He has eaten dinner.</label>
+                    <label><input type="radio" name="answer2" value="C"> He have eaten dinner.</label>
+                </div>
+
+                <br><br>
+                <p>3. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer3" value="A"> They was happy to see us.</label>
+                    <label><input type="radio" name="answer3" value="B"> They is happy to see us.</label>
+                    <label><input type="radio" name="answer3" value="C"> They were happy to see us.</label>
+                </div>
+
+                <br><br>
+                <p>4. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer4" value="A"> She will going to the party.</label>
+                    <label><input type="radio" name="answer4" value="B"> She will be going to the party.</label>
+                    <label><input type="radio" name="answer4" value="C"> She will goes to the party.</label>
+                </div>
+
+                <br><br>
+                <p>5. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer5" value="A"> We have been studied for hours.</label>
+                    <label><input type="radio" name="answer5" value="B"> We have been studying for hours.</label>
+                    <label><input type="radio" name="answer5" value="C"> We has been studying for hours.</label>
+                </div>
+
+                <br><br>
+                <p>6. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer6" value="A"> He had forgot to bring the book.</label>
+                    <label><input type="radio" name="answer6" value="B"> He had forgot to bringing the book.</label>
+                    <label><input type="radio" name="answer6" value="C"> He had forgotten to bring the book.</label>
+                </div>
+
+                <br><br>
+                <p>7. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer7" value="A"> I did not knew the answer.</label>
+                    <label><input type="radio" name="answer7" value="B"> I did not know the answer.</label>
+                    <label><input type="radio" name="answer7" value="C"> I do not knew the answer.</label>
+                </div>
+
+                <br><br>
+                <p>8. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer8" value="A"> They will have finish the project by
+                        tomorrow.</label>
+                    <label><input type="radio" name="answer8" value="B"> They will have finished the project by
+                        tomorrow.</label>
+                    <label><input type="radio" name="answer8" value="C"> They will have finishing the project by
+                        tomorrow.</label>
+                </div>
+
+                <br><br>
+                <p>9. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer9" value="A"> She was dancing at the party.</label>
+                    <label><input type="radio" name="answer9" value="B"> She were dancing at the party.</label>
+                    <label><input type="radio" name="answer9" value="C"> She are dancing at the party.</label>
+                </div>
+
+                <br><br>
+                <p>10. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer10" value="A"> He will to the market.</label>
+                    <label><input type="radio" name="answer10" value="B"> He will go to the market.</label>
+                    <label><input type="radio" name="answer10" value="C"> He will going to the market.</label>
+                </div>
+
+                <br><br>
+                <p>11. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer11" value="A"> They had been waiting for an hour.</label>
+                    <label><input type="radio" name="answer11" value="B"> They had been waited for an hour.</label>
+                    <label><input type="radio" name="answer11" value="C"> They has been waiting for an hour.</label>
+                </div>
+
+                <br><br>
+                <p>12. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer12" value="A"> I am finished my homework.</label>
+                    <label><input type="radio" name="answer12" value="B"> I am finishing my homework.</label>
+                    <label><input type="radio" name="answer12" value="C"> I am finish my homework.</label>
+                </div>
+
+                <br><br>
+                <p>13. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer13" value="A"> She have been here before.</label>
+                    <label><input type="radio" name="answer13" value="B"> She has been here before.</label>
+                    <label><input type="radio" name="answer13" value="C"> She had been here before.</label>
+                </div>
+
+                <br><br>
+                <p>14. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer14" value="A"> We were studied together last night.</label>
+                    <label><input type="radio" name="answer14" value="B"> We were study together last night.</label>
+                    <label><input type="radio" name="answer14" value="C"> We were studying together last night.</label>
+                </div>
+
+                <br><br>
+                <p>15. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer15" value="A"> He will be completed the task.</label>
+                    <label><input type="radio" name="answer15" value="B"> He will be completing the task.</label>
+                    <label><input type="radio" name="answer15" value="C"> He will be complete the task.</label>
+                </div>
+
+                <br><br>
+                <p>16. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer16" value="A"> They is going to visit us tomorrow.</label>
+                    <label><input type="radio" name="answer16" value="B"> They are going to visit us tomorrow.</label>
+                    <label><input type="radio" name="answer16" value="C"> They are going to visited us tomorrow.</label>
+                </div>
+
+                <br><br>
+                <p>17. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer17" value="A"> She has been write a letter.</label>
+                    <label><input type="radio" name="answer17" value="B"> She has been writing a letter.</label>
+                    <label><input type="radio" name="answer17" value="C"> She has been wrote a letter.</label>
+                </div>
+
+                <br><br>
+                <p>18. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer18" value="A"> I was sleep all day.</label>
+                    <label><input type="radio" name="answer18" value="B"> I was sleeping all day.</label>
+                    <label><input type="radio" name="answer18" value="C"> I was slept all day.</label>
+                </div>
+
+                <br><br>
+                <p>19. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer19" value="A"> They had went to the concert.</label>
+                    <label><input type="radio" name="answer19" value="B"> They had gone to the concert.</label>
+                    <label><input type="radio" name="answer19" value="C"> They had go to the concert.</label>
+                </div>
+
+                <br><br>
+                <p>20. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer20" value="A"> He will be finish the work.</label>
+                    <label><input type="radio" name="answer20" value="B"> He will be finishing the work.</label>
+                    <label><input type="radio" name="answer20" value="C"> He will be finishes the work.</label>
+                </div>
+
+
+                <br><br>
+                <p>21. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer21" value="A"> She will goes to school tomorrow.</label>
+                    <label><input type="radio" name="answer21" value="B"> She will going to school tomorrow.</label>
+                    <label><input type="radio" name="answer21" value="C"> She will go to school tomorrow.</label>
+                </div>
+
+
+                <br><br>
+                <p>22. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer22" value="A"> They has been working here for a year.</label>
+                    <label><input type="radio" name="answer22" value="B"> They have been working here for a
+                        year.</label>
+                    <label><input type="radio" name="answer22" value="C"> They had been working here for a year.</label>
+                </div>
+
+
+
+
+
+                <br><br>
+                <p>23. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer23" value="A"> He is play football now.</label>
+                    <label><input type="radio" name="answer23" value="B"> He is playing football now.</label>
+                    <label><input type="radio" name="answer23" value="C"> He was playing football now.</label>
+                </div>
+
+
+                <br><br>
+                <p>24. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer24" value="A"> I will be cooking dinner when you
+                        arrive.</label>
+                    <label><input type="radio" name="answer24" value="B"> I will cooking dinner when you arrive.</label>
+                    <label><input type="radio" name="answer24" value="C"> I am be cooking dinner when you
+                        arrive.</label>
+                </div>
+
+
+                <br><br>
+                <p>25. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer25" value="A"> She had finished her work before the
+                        deadline.</label>
+                    <label><input type="radio" name="answer25" value="B"> She has finished her work before the
+                        deadline.</label>
+                    <label><input type="radio" name="answer25" value="C"> She will finish her work before the
+                        deadline.</label>
+                </div>
+
+
+                <br><br>
+                <p>26. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer26" value="A"> They will have arrived by now.</label>
+                    <label><input type="radio" name="answer26" value="B"> They has arrived by now.</label>
+                    <label><input type="radio" name="answer26" value="C"> They have arrived by now.</label>
+                </div>
+
+
+                <br><br>
+                <p>27. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer27" value="A"> She did not liked the movie.</label>
+                    <label><input type="radio" name="answer27" value="B"> She did not like the movie.</label>
+                    <label><input type="radio" name="answer27" value="C"> She did not liking the movie.</label>
+                </div>
+
+
+                <br><br>
+                <p>28. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer28" value="A"> We have been waiting for hours.</label>
+                    <label><input type="radio" name="answer28" value="B"> We had been waiting for hours.</label>
+                    <label><input type="radio" name="answer28" value="C"> We will have been waiting for hours.</label>
+                </div>
+
+
+                <br><br>
+                <p>29. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer29" value="A"> He eats lunch at 12 PM every day.</label>
+                    <label><input type="radio" name="answer29" value="B"> He eating lunch at 12 PM every day.</label>
+                    <label><input type="radio" name="answer29" value="C"> He is eat lunch at 12 PM every day.</label>
+                </div>
+
+
+                <br><br>
+                <p>30. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer30" value="A"> They have not seen the new movie yet.</label>
+                    <label><input type="radio" name="answer30" value="B"> They had not seen the new movie yet.</label>
+                    <label><input type="radio" name="answer30" value="C"> They has not seen the new movie yet.</label>
+                </div>
+
+
+                <br><br>
+                <p>31. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer31" value="A"> I will finish the project by tomorrow.</label>
+                    <label><input type="radio" name="answer31" value="B"> I will finishes the project by
+                        tomorrow.</label>
+                    <label><input type="radio" name="answer31" value="C"> I will finishing the project by
+                        tomorrow.</label>
+                </div>
+
+
+                <br><br>
+                <p>32. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer32" value="A"> She is studied for the test right now.</label>
+                    <label><input type="radio" name="answer32" value="B"> She is studying for the test right
+                        now.</label>
+                    <label><input type="radio" name="answer32" value="C"> She is study for the test right now.</label>
+                </div>
+
+
+                <br><br>
+                <p>33. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer33" value="A"> He was played the guitar at the
+                        concert.</label>
+                    <label><input type="radio" name="answer33" value="B"> He was playing the guitar at the
+                        concert.</label>
+                    <label><input type="radio" name="answer33" value="C"> He was play the guitar at the concert.</label>
+                </div>
+
+
+                <br><br>
+                <p>34. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer34" value="A"> They will have completed the task by 5
+                        PM.</label>
+                    <label><input type="radio" name="answer34" value="B"> They will has completed the task by 5
+                        PM.</label>
+                    <label><input type="radio" name="answer34" value="C"> They will had completed the task by 5
+                        PM.</label>
+                </div>
+
+
+                <br><br>
+                <p>35. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer35" value="A"> I am be going to the store later.</label>
+                    <label><input type="radio" name="answer35" value="B"> I will be going to the store later.</label>
+                    <label><input type="radio" name="answer35" value="C"> I am being going to the store later.</label>
+                </div>
+
+
+                <br><br>
+                <p>36. Choose the correct sentence:</p>
+                <div class="options">
+                    <label><input type="radio" name="answer36" value="A"> She does her homework every night.</label>
+                    <label><input type="radio" name="answer36" value="B"> She did her homework every night.</label>
+                    <label><input type="radio" name="answer36" value="C"> She doing her homework every night.</label>
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <!-- Add more questions here -->
+
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div id="result" class="result"></div>
+        <div id="feedback" class="feedback"></div>
+        <div id="certificate" class="certificate">
+            <h2>Congratulations, <span id="cert-name"></span>!</h2>
+            <p>You have completed the quiz.</p>
+        </div>
+    </div>
+    <script>
+        let timer;
+        let timeLeft = 480; // 8 minutes in seconds
+        let username = "";
+    
+        function startTimer() {
+            timer = setInterval(function () {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                document.getElementById('timer').innerText = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timeLeft--;
+    
+                if (timeLeft === 120) { // Alert when 2 minutes are left
+                    Swal.fire({
+                        title: 'Two Minutes Left!',
+                        text: 'You have only 2 minutes left. Please submit your answers quickly.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    });
+                }
+    
+                if (timeLeft < 0) {
+                    clearInterval(timer);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+    
+        function login() {
+            const emailPattern = /^[a-z0-9._%+-]+@gmail\.com$/;
+            const namePattern = /^[A-Za-z\s]+$/; // Only alphabets and spaces allowed for the name
+            const email = document.getElementById('email').value;
+            username = document.getElementById('username').value;
+    
+            if (!namePattern.test(username)) {
+                Swal.fire({
+                    title: 'Invalid Username',
+                    text: 'Please write only alphabets in the username.',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+                return;
+            }
+    
+            if (emailPattern.test(email)) {
+                Swal.fire({
+                    title: 'Login Successful',
+                    text: 'Welcome to the Grammar Quiz!',
+                    icon: 'success',
+                    confirmButtonText: 'Start Quiz'
+                }).then(() => {
+                    document.getElementById('login-container').style.display = 'none';
+                    document.getElementById('quiz-container').style.display = 'block';
+                    startTimer();
+                });
+            } else {
+                Swal.fire({
+                    title: 'Login Failed',
+                    text: 'Please enter a valid Gmail address.',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+            }
+        }
+    
+        function submitQuiz() {
+            // Prevent resubmission
+            document.querySelector('button[onclick="submitQuiz()"]').disabled = true;
+    
+            let score = 0;
+            let totalQuestions = 36;
+    
+            const answers = {
+                "answer1": "B",
+                "answer2": "B",
+                "answer3": "B",
+                "answer4": "B",
+                "answer5": "B",
+                "answer6": "A",
+                "answer7": "B",
+                "answer8": "A",
+                "answer9": "A",
+                "answer10": "B",
+                "answer11": "C",
+                "answer12": "A",
+                "answer13": "B",
+                "answer14": "B",
+                "answer15": "B",
+                "answer16": "A",
+                "answer17": "C",
+                "answer18": "B",
+                "answer19": "A",
+                "answer20": "C",
+                "answer21": "C",
+                "answer22": "B",
+                "answer23": "B",
+                "answer24": "A",
+                "answer25": "A",
+                "answer26": "A",
+                "answer27": "B",
+                "answer28": "A",
+                "answer29": "A",
+                "answer30": "A",
+                "answer31": "A",
+                "answer32": "B",
+                "answer33": "B",
+                "answer34": "A",
+                "answer35": "B",
+                "answer36": "B"
+            };
+    
+            for (let i = 1; i <= totalQuestions; i++) {
+                let selectedAnswer = document.querySelector(`input[name="answer${i}"]:checked`);
+                let correctAnswer = answers[`answer${i}`];
+    
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswer) {
+                        score++;
+                        selectedAnswer.parentElement.style.color = 'green'; // Correct answers in green
+                    } else {
+                        selectedAnswer.parentElement.style.color = 'red'; // Incorrect answers in red
+                        document.querySelector(`input[name="answer${i}"][value="${correctAnswer}"]`).parentElement.style.color = 'green';
+                    }
+                }
+            }
+    
+            // Final result
+            Swal.fire({
+                title: 'Quiz Submitted',
+                text: `You scored ${score} out of ${totalQuestions}.`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                let resultText = `You scored ${score} out of ${totalQuestions}.`;
+                let feedbackText = score >= 28 ? "Excellent job!" : score >= 20 ? "Good effort!" : "Keep practicing!";
+    
+                document.getElementById('result').innerText = resultText;
+                document.getElementById('feedback').innerText = feedbackText;
+                document.getElementById('certificate').style.display = 'block';
+                document.getElementById('cert-name').innerText = username;
+    
+                // Disable all inputs
+                document.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+            });
+        }
+    </script>
+    
+    
+
+</body>
+
+</html>
